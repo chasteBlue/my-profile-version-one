@@ -1,5 +1,8 @@
 <template>
-  <div ref="sceneContainer" style="width: 100%; height: 700px;"></div>
+  <div
+    ref="sceneContainer"
+    style="width: 100%; height: 700px;"
+  />
 </template>
 
 <script>
