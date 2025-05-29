@@ -1,7 +1,7 @@
 <template>
   <div
     ref="sceneContainer"
-    style="width: 100%; height: 700px;"
+    style="width: 100%; height: 100vh;"
   />
 </template>
 
