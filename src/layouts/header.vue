@@ -3,7 +3,7 @@
    <header
   ref="sceneContainer"
   :class="[
-    'fixed top-0 left-0 w-full h-[160px] transition-transform ease-in-out duration-300',
+    'fixed pl-4 pr-4 top-0 left-0 w-full h-[160px] transition-transform ease-in-out duration-300',
     isHidden ? '-translate-y-full' : 'translate-y-0'
   ]">
 
@@ -27,7 +27,7 @@
               <span class="font-semibold">Message me</span>
               <div class="text-sm flex items-left space-x-2 text-gray-500">
                 <BsEnvelope class="text-blue-500" />
-                <a href="mailto:chastlinem@gmail.com" class="hover:text-blue-600">
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=chastlinem@gmail.com" rel="noopener noreferrer" target="_blank"  class="hover:text-blue-600">
                   chastlinem@gmail.com
                 </a>
               </div>
@@ -37,7 +37,7 @@
               <div class="text-sm flex items-left space-x-2 text-gray-500">
                 <BsTelephone class="text-blue-500" />
                 <a href="tel:+639511687732" class="hover:text-blue-600">
-                  Ph (+63)951 168 7732
+                  PH (+63)951 168 7732
                 </a>
               </div>
             </li>
@@ -59,29 +59,26 @@
       <nav class="flex justify-between items-center bg-blue-900 text-white text-sm px-4 py-2 z-[-10] relative">
         <!-- Socials -->
         <div class="flex space-x-3">
-          <a href="#" class="hover:underline">Facebook</a>
-          <a href="#" class="hover:underline">Twitter</a>
-          <a href="#" class="hover:underline">GitHub</a>
+          <a href="#" class="hover:underline">About Me</a>
+          <a href="#" class="hover:underline">Projects</a>
+          <a href="#" class="hover:underline">Experience</a>
+          <a href="#" class="hover:underline">Contact Me</a>
         </div>
 
         <!-- Tabs -->
         <div class="flex space-x-4">
-          <a href="#" class="hover:underline">Projects</a>
-          <a href="#" class="hover:underline">Skills</a>
-          <a href="#" class="hover:underline">Contact</a>
+          <a href="#" class="hover:underline"><BsFacebook /></a>
+          <a href="#" class="hover:underline"><BsGithub /></a>
+          <a href="#" class="hover:underline"><BsLinkedin /></a>
+          <a href="#" class="hover:underline"><BsTwitter /></a>
         </div>
       </nav>
 </header>
 
     <!-- Sidebar Menu (Mobile/Tablet only) -->
-<div
-  v-show="isOpen && !isDesktop"
-  class="fixed inset-y-0 left-0 w-64 bg-white shadow-lg p-6 z-50 transform transition-transform duration-300"
->
-
-
-  <button @click="isOpen = false" class="absolute top-4 right-4 text-gray-600 text-2xl">
-    ×
+<div v-show="isOpen && !isDesktop"
+  class="fixed inset-y-0 left-0 w-64 bg-white shadow-lg p-6 z-50 transform transition-transform duration-300">
+  <button @click="isOpen = false" class="absolute top-4 right-4 text-gray-600 text-2xl"> ×
   </button>
 
   <ul class="flex flex-col space-y-6 pt-8">
@@ -118,16 +115,20 @@
 </template>
 
 <script>
-import {  BsList, BsDownload, BsTelephone, BsEnvelope } from "vue-icons-plus/bs";
+import { BsList, BsDownload, BsTelephone, BsEnvelope, BsFacebook, BsGithub, BsTwitter, BsLinkedin } from "vue-icons-plus/bs";
 
 export default {
-  name: 'HeaderNav',
-   components: {
+  name: "HeaderNav",
+  components: {
     BsList,
-		BsDownload,
-    BsTelephone, 
+    BsDownload,
+    BsTelephone,
     BsEnvelope,
-	},
+    BsFacebook,
+    BsGithub,
+    BsTwitter,
+    BsLinkedin,
+  },
    data() {
     return {
       isOpen: false, 
