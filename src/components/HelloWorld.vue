@@ -1,9 +1,10 @@
 <template>
 <!--TODO: Fix the dropdown-->
-  <HeaderNav />
-
-<section ref="introSection" class="section-1 intro relative flex items-center justify-center overflow-hidden h-screen">
-  <!-- Left: Intro Text -->
+<section
+  ref="introSection"
+  class="section-1 intro relative flex items-center justify-center min-h-screen max-h-screen overflow-hidden"
+>
+<!-- Left: Intro Text -->
 <div class=" page text-left z-10 relative">
     <h1>Hi! I'm Dynnhiel Chastline Miguel</h1>
     <div class="bg-blue-500 text-white p-2 inline-block rounded">
@@ -12,52 +13,30 @@
 </div>
 
   <!-- 3D Scene covers entire section (absolute) -->
-  <div ref="sceneContainer" class="absolute top-0 left-0 w-full h-full z-0 pointer-events-auto" id="threeD"> </div>
+<div ref="sceneContainer" class="absolute top-0 left-0 w-full h-full z-0 pointer-events-auto" id="threeD"> </div>
 
-<div v-if="showMessage" class="message-popup fixed top-4 right-4 z-50 bg-black bg-opacity-70 text-white px-4 py-2 rounded-lg shadow-md">
-  {{ showMessage }}
+<div v-if="showMessage" class="message-popup fixed top-4 right-4 z-50 bg-black bg-opacity-70 text-white px-4 py-2 rounded-lg shadow-md"> {{ showMessage }}
 </div>
-<!-- Arrow to scroll down -->
-    <div @click="scrollToSection2" class="absolute bottom-6 left-1/2 transform -translate-x-1/2 cursor-pointer z-20">
+
+<!-- Arrow -->
+<div  @click="scrollToSection2"  class="absolute bottom-6 left-1/2 transform -translate-x-1/2 cursor-pointer z-50">
       <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 animate-bounce text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
       </svg>
     </div>
-
-
-
-
-
 </section>
 
+<SectionTwo  id="section-2" />
 
-<section id="section-2" class="section-2 h-screen flex items-center justify-center bg-purple-900 text-white">
-    <h2>Welcome to the Next Section</h2>
-  </section>
-
-
-
-
-  
-  <div class="h-screen">
-
-
-</div>
-
-  <div class="h-screen">
-  <div class="bg-blue-900 h-screen flex items-center justify-center">
-    <button class="flex items-center bg-white px-4 py-3 text-blue-600 hover:bg-blue-400 rounded" @click="goAbout">
-      3D Home
-    </button>
-  </div></div>
 </template>
 
 <script>
 import { useRouter } from "vue-router";
-
-import "../assets/main.css";
-import HeaderNav from "../layouts/header.vue";
 import { nextTick } from "vue";
+import "../assets/main.css";
+
+import SectionTwo from "./SectionTwo.vue";
+
 
 import { gsap } from "gsap";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
@@ -73,7 +52,7 @@ import { DragControls } from 'three/examples/jsm/controls/DragControls.js';
 export default {
   name: "GsapExample",
   components: {
-    HeaderNav,
+    SectionTwo,
   },
   data() {
     return {
@@ -125,6 +104,7 @@ export default {
     scale: 2,
   });
 
+
 });
 
   },
@@ -134,6 +114,12 @@ export default {
     }
   },
   methods: {
+scrollToSection2() {
+      const section = document.querySelector("#section-2");
+      if (section) {
+        section.scrollIntoView({ behavior: "smooth" });
+      }
+    },
     init3D() { 
   const container = this.$refs.sceneContainer;
 
@@ -301,14 +287,7 @@ onPointerDown(event) {
       this.showMessage = '';
     }, 2000);
   }
-},
-scrollToSection2() {
-      gsap.to(window, {
-        duration: 1,
-        scrollTo: { y: "#section-2" },
-        ease: "power2.out"
-      });
-    }
+}
 
 };
 
@@ -317,19 +296,13 @@ scrollToSection2() {
 
 <style>
 
-.section-1 {
-  min-height: 100vh; 
-  padding: 20vh;
-}
+
 
 .page {
   color: dark;
   line-height: 5em;
 }
 
-section {
-  height: 100vh;
-}
 
 h1 {
   font-size: 4vw;
@@ -350,17 +323,6 @@ h1 {
   position: relative;
 }
 
-.image-layer {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  z-index: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
 .title-layer {
   position: absolute;

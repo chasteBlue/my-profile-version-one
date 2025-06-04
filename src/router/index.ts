@@ -1,11 +1,20 @@
-// src/router/index.ts (for Vue 3 + TypeScript)
+// src/router/index.ts
 import { createRouter, createWebHistory } from 'vue-router'
-import ThreeScene from '../components/ThreeScene.vue';
-import HelloWorld from '../components/HelloWorld.vue';
+import BodyLayout from '@/layouts/body.vue'   // your layout wrapper
+import ThreeScene from '@/components/ThreeScene.vue'
+import HelloWorld from '@/components/HelloWorld.vue'
+import SectionTwo from '@/components/SectionTwo.vue'
 
 const routes = [
-  { path: '/about', component: ThreeScene },
-  { path: '/', component: HelloWorld },
+  {
+    path: '/',
+    component: BodyLayout,   // The layout wrapper
+    children: [
+      { path: '', component: HelloWorld }, 
+      { path: '', component: SectionTwo }, 
+      { path: 'about', component: ThreeScene }, // about page
+    ],
+  },
 ]
 
 const router = createRouter({

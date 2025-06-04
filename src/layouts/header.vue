@@ -1,9 +1,9 @@
 <template>
-  <!--TODO: Clean and do the second navigation-->
+  <!--TODO: Responsive-->
    <header
   ref="sceneContainer"
   :class="[
-    'fixed pl-4 pr-4 top-0 left-0 w-full h-[160px] transition-transform ease-in-out duration-300',
+    'fixed pl-4 pr-4 top-0 left-0 w-full h-[160px] transition-transform ease-in-out duration-300 z-110',
     isHidden ? '-translate-y-full' : 'translate-y-0'
   ]">
 
@@ -56,7 +56,7 @@
 
 
       <!-- Secondary Navigation -->
-      <nav class="flex justify-between items-center bg-blue-900 text-white text-sm px-4 py-2 z-[-10] relative">
+      <nav v-if="isDesktop" class="flex justify-between items-center bg-blue-900 text-white text-sm px-4 py-2 z-[-10] relative">
         <!-- Socials -->
         <div class="flex space-x-3">
           <a href="#" class="hover:underline">About Me</a>
@@ -77,7 +77,7 @@
 
     <!-- Sidebar Menu (Mobile/Tablet only) -->
 <div v-show="isOpen && !isDesktop"
-  class="fixed inset-y-0 left-0 w-64 bg-white shadow-lg p-6 z-50 transform transition-transform duration-300">
+  class="fixed inset-y-0 left-0 w-64 bg-white shadow-lg p-6 z-50 transform transition-transform duration-300 z-120">
   <button @click="isOpen = false" class="absolute top-4 right-4 text-gray-600 text-2xl"> ×
   </button>
 
@@ -101,7 +101,7 @@
       </div>
     </li>
     <li>
-      <a
+    <a
         href="/CV-Dynnhiel.pdf"
         download
         class="bg-blue-600 text-white px-4 py-2 rounded inline-flex items-center gap-2"
@@ -111,7 +111,33 @@
       </a>
     </li>
   </ul>
+<aside class="text-black flex flex-col justify-between p-6">
+    <!-- Navigation Links -->
+    <nav class="flex flex-col space-y-6 text-lg font-medium">
+      <a href="#" class="hover:underline hover:text-blue-400 transition">About Me</a>
+      <a href="#" class="hover:underline hover:text-blue-400 transition">Projects</a>
+      <a href="#" class="hover:underline hover:text-blue-400 transition">Experience</a>
+      <a href="#" class="hover:underline hover:text-blue-400 transition">Contact Me</a>
+    </nav>
+
+    <!-- Social Icons -->
+    <div class="flex space-x-6 mt-10">
+      <a href="#" aria-label="Facebook" class="hover:text-blue-600 transition">
+        <BsFacebook class="w-6 h-6" />
+      </a>
+      <a href="#" aria-label="GitHub" class="hover:text-gray-400 transition">
+        <BsGithub class="w-6 h-6" />
+      </a>
+      <a href="#" aria-label="LinkedIn" class="hover:text-blue-500 transition">
+        <BsLinkedin class="w-6 h-6" />
+      </a>
+      <a href="#" aria-label="Twitter" class="hover:text-blue-400 transition">
+        <BsTwitter class="w-6 h-6" />
+      </a>
+    </div>
+  </aside>
 </div>
+
 </template>
 
 <script>
