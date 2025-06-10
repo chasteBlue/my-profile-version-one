@@ -1,5 +1,4 @@
 <template>
-  <!--TODO: Responsive-->
    <header
   ref="sceneContainer"
   :class="[
